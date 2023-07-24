@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Company;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Addpost extends Model
+class Company extends Model
 {
     use HasFactory;
+
+
 }

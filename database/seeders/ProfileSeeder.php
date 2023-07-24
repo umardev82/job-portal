@@ -4,20 +4,14 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Admin\Post;
-use Faker\Factory as Faker;
-use Illuminate\Support\Arr;
 
-class PostSeeder extends Seeder
+class ProfileSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-
-       //
-
-
+        //
     }
 }
