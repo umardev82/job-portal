@@ -1,3 +1,6 @@
+@php
+$company = \App\Models\Admin\Company::where('id', \Illuminate\Support\Facades\Auth::id())->first();
+@endphp
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -12,11 +15,11 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('admin/assets/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                <img src="{{ asset($company->image) }}" class="img-circle elevation-2"
                     alt="User Image">
             </div>
             <div class="info">
-                <a href="{{route('company.profile.edit')}}" class="d-block">Alexander Pierce</a>
+                <a href="{{route('company.profile.edit')}}" class="d-block">{{$company->name}}</a>
             </div>
         </div>
 

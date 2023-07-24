@@ -56,12 +56,17 @@ class CompanyController extends Controller
      */
     public function update(Request $request)
     {
+
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('company/images'), $imageName);
+
         $company = Company::where('id', Auth::id())->first();
         $company->name = $request->name;
         $company->description = $request->description;
-        $company->address =$request->address;
-        $company->email =$request->email;
-        $company->location =$request->location;
+        $company->address = $request->address;
+        $company->email = $request->email;
+        $company->location = $request->location;
+        $company->image = 'company/images/' . $imageName;
         $company->save();
         return redirect()->route('company.profile.edit');
     }

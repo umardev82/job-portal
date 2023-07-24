@@ -25,10 +25,13 @@
                     <form class="form-horizontal" action="{{route('company.profile.update')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('put')
+                        <div class="col-3">
+                            <img src="{{asset($company->image)}}" id="output" alt="" class="img-thumbnail img-circle img-size-64">
+                        </div>
                         <div class="form-group row">
                             <label for="formFile" class="col-sm-2 col-form-label">profile </label>
                             <div class="col-sm-10">
-                                <input name="image" class="form-control" type="file" id="formFile">
+                                <input onchange="updateImg(event)" name="image" class="form-control" type="file" id="formFile">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -76,3 +79,14 @@
         </div>
     </div>
 @endsection
+
+<script !src="">
+    function updateImg(event) {
+        console.log(event.target.files)
+        let output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    }
+</script>
