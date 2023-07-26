@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -26,7 +27,23 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::DASHBOARD;
+//    protected $redirectTo = RouteServiceProvider::DASHBOARD;
+
+
+    protected function authenticated($request , $user){
+        if (Auth::user()->role->role == 'super_admin')
+        {
+            return redirect()->route('admin.dashboard') ;
+        }
+        elseif (Auth::user()->role->role == 'job_provider')
+        {
+            return redirect()->route('company.dashboard') ;
+        }
+        elseif (Auth::user()->role->role == 'job_seeker')
+        {
+            return redirect()->route('user.dashboard') ;
+        }
+    }
 
     /**
      * Create a new controller instance.

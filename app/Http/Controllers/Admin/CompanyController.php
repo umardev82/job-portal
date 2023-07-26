@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Company;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
@@ -54,7 +56,10 @@ class CompanyController extends Controller
     public function edit(string $id)
     {
         $company = Company::find($id);
-        return view('admin.company.edit', compact('company'));
+        $users = User::wherehas('role', function ($query) {
+            $query->where('role', 'job_provider');
+        })->get();
+        return view('admin.company.edit', compact('company', 'users'));
 
     }
 
@@ -69,6 +74,7 @@ class CompanyController extends Controller
         $company->address = $request->address;
         $company->email = $request->email;
         $company->location = $request->location;
+        $company->user_id = $request->user_id;
         $company->save();
         return redirect()->route('admin.company.index');
 

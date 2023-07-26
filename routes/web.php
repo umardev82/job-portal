@@ -31,7 +31,7 @@ Route::get('/', function () {
     //Admin
     Route::middleware('auth')->prefix('/admin')->group(function () {
     //Dashboard
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.include.dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     //Post
     Route::get('posts', [PostController::class, 'index'])->name('admin.post.index');
     Route::get('post/create', [PostController::class, 'create'])->name('admin.post.create');
@@ -51,18 +51,23 @@ Route::get('/', function () {
     Route::get('company', [CompanyController::class, 'index'])->name('admin.company.index');
     Route::get('company/create', [CompanyController::class, 'create'])->name('admin.company.create');
     Route::post('company.store', [CompanyController::class, 'store'])->name('admin.company.store');
-    Route::get('company/edit{id}', [CompanyController::class, 'edit'])->name('admin.company.edit');
+    Route::get('company/edit/{id}', [CompanyController::class, 'edit'])->name('admin.company.edit');
+    Route::get('company/show/{id}', [CompanyController::class, 'show'])->name('admin.company.show');
     Route::put('company/update/{id}', [CompanyController::class, 'update'])->name('admin.company.update');
     Route::delete('company/delete/{id}', [CompanyController::class, 'destroy'])->name('admin.company.destroy');
 });
 
     //Company
 
+    Route::middleware('auth')->prefix('/user')->group(function () {
+
+        Route::get('dashboard', [App\Http\Controllers\Company\DashboardController::class, 'index'])->name('user.dashboard');
+
+    });
     Route::middleware('auth')->prefix('/company')->group(function () {
 
     //Dashboard
-
-    Route::get('dashboard', [App\Http\Controllers\Company\DashboardController::class, 'index'])->name('company.includes.dashboard');
+    Route::get('dashboard', [App\Http\Controllers\Company\DashboardController::class, 'index'])->name('company.dashboard');
 
     //profile
 

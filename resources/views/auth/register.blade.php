@@ -70,19 +70,19 @@
                                         name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
-
                             <div class="row mb-3">
-                                <div class="col-md-4 form-check">
-                                </div>
-                                @foreach ($roles as $role)
-                                    <div class="col-md-4 form-check">
-                                        <input value="{{ $role->id }}" class="form-check-input" type="radio"
-                                            name="role_id" id="{{ $role->id }}">
+                                <label for="password-confirm"
+                                       class="col-md-4 col-form-label text-md-end">{{ __('Choose Role') }}</label>
+
+                                <div class="col-md-6">
+                                    @foreach ($roles as $role)
+                                    <input value="{{ $role->id }}" class="form-check-input" type="radio"
+                                           name="role_id" id="{{ $role->id }}">
                                         <label class="form-check-label" for="{{ $role->id }}">
                                             {{ $role->name }}
                                         </label>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                </div>
                             </div>
 
                             <div class="row mb-0">
