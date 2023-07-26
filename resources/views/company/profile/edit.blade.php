@@ -41,11 +41,11 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputdescription" class="col-sm-2 col-form-label">Description</label>
+                            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-10">
-                                <textarea name="description" class="form-control" rows="4">{{$company->description}}</textarea>
+                                <input name="email" type="email" class="form-control" value="{{$company->email}}">
                             </div>
-                          </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
@@ -53,13 +53,13 @@
                                 <input name="address" type="text" class="form-control" value="{{$company->address}}">
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-sm-10">
-                                <input name="email" type="email" class="form-control" value="{{$company->email}}">
-                            </div>
-                        </div>
 
+                        <div class="form-group row">
+                            <label for="inputdescription" class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-10">
+                                <textarea name="description" class="form-control" rows="4">{{$company->description}}</textarea>
+                            </div>
+                          </div>
                         <div class="form-group row">
                             <label for="inputlocation" class="col-sm-2 col-form-label">Loaction</label>
                             <div class="col-sm-10">

@@ -47,7 +47,7 @@ class CompanyController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('admin.company.detail');
     }
 
     /**

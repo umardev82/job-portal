@@ -105,11 +105,11 @@ $user = \App\Models\User::where('id', \Illuminate\Support\Facades\Auth::id())->f
                 </li>
 
                 <li class="nav-item @if(request()->route()->getName() === 'admin.post.*') menu-open @endif">
-                    <a href="#" class="nav-link @if(request()->route()->getName() === 'admin.role.*') active @endif">
+                    <a href="#" class="nav-link @if(request()->route()->getName() === 'admin.post.*') active @endif">
                         <p>Post<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item @if(request()->route()->getName() === 'admin.role.index') active @endif">
+                        <li class="nav-item @if(request()->route()->getName() === 'admin.post.index') active @endif">
                             <a href="{{ route('admin.post.index') }}" class="nav-link active">
                                 <i class="far fa-image nav-icon"></i>
                                 <p>Post</p>
@@ -117,7 +117,7 @@ $user = \App\Models\User::where('id', \Illuminate\Support\Facades\Auth::id())->f
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.post.create') }}"
-                               class="nav-link @if(request()->route()->getName() === 'admin.role.create') active @endif">
+                               class="nav-link @if(request()->route()->getName() === 'admin.post.create') active @endif">
                                 <i class="far fa-image nav-icon"></i>
                                 <p>Create Post</p>
                             </a>

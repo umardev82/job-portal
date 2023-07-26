@@ -1,27 +1,5 @@
 @extends('company.includes.master')
 @section('content')
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>AdminLTE 3 | Simple Tables</title>
-
-        <!-- Google Font: Source Sans Pro -->
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-    </head>
-
-    <body class="hold-transition sidebar-mini">
-        <div class="wrapper">
-
-
-
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -33,7 +11,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="{{route('company.dashboard')}}">Dashboard</a></li>
                                     <li class="breadcrumb-item active">Listing Job</li>
                                 </ol>
                             </div>
@@ -73,11 +51,11 @@
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Title</th>
-                                                    <th>Description</th>
-                                                    <th>created by</th>
                                                     <th>company</th>
                                                     <th>Designation</th>
+                                                    <th>Description</th>
                                                     <th>Location</th>
+                                                    <th>created by</th>
                                                     <th>operation</th>
                                                 </tr>
                                             </thead>
@@ -87,18 +65,22 @@
                                                     <tr>
                                                         <td>{{ $item->id }}</td>
                                                         <td>{{ $item->title }}</td>
-                                                        <td>{{ $item->description }}</td>
-                                                        <td>{{ $item->created_by }}</td>
                                                         <td>{{ $item->company }}</td>
                                                         <td>{{ $item->designation }}</td>
+                                                        <td>{{Str::limit($item->description,25)}}<a href="{{route('company.post.show', ['id' => $item->id])}}">read more</a></td>
                                                         <td>{{ $item->location }}</td>
+                                                        <td>{{ $item->created_by }}</td>
 
                                                         <td>
                                                             <div class="row">
                                                                 <a class="btn btn-default mr-1"
-                                                                    href="{{ route('company.post.edit', ['id' => $item->id]) }}">
-                                                                    <i class="fas fa-edit"></i>
+                                                                    href="{{ route('company.post.show', ['id' => $item->id]) }}">
+                                                                    <i class="fas fa-eye"></i>
                                                                 </a>
+                                                                <a class="btn btn-default mr-1"
+                                                                href="{{ route('company.post.edit', ['id' => $item->id]) }}">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
                                                                 <form
                                                                     action="{{ route('company.post.destroy', ['id' => $item->id]) }}"
                                                                     method="POST">
@@ -130,25 +112,4 @@
                 <!-- /.content -->
             </div>
             <!-- /.content-wrapper -->
-
-
-            <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Control sidebar content goes here -->
-            </aside>
-            <!-- /.control-sidebar -->
-        </div>
-        <!-- ./wrapper -->
-
-        <!-- jQuery -->
-        <script src="../../plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="../../dist/js/adminlte.min.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="../../dist/js/demo.js"></script>
-    </body>
-
-    </html>
 @endsection

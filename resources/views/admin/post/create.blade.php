@@ -40,15 +40,6 @@
                                           <input name="title" type="text" class="form-control">
                                       </div>
                                       <div class="form-group">
-                                          <label for="inputDescription">Description</label>
-                                          <textarea name="description" class="form-control" rows="4"></textarea>
-                                      </div>
-                                      <div class="form-group">
-                                          <label for="inputName">Created_by</label>
-                                          <input name="created_by" type="integer" class="form-control">
-                                      </div>
-
-                                      <div class="form-group">
                                           <label for="inputClientCompany">Company</label>
                                           <input name="company" type="text" class="form-control">
                                       </div>
@@ -57,9 +48,17 @@
                                           <input name="designation" type="text" class="form-control">
                                       </div>
                                       <div class="form-group">
+                                        <label for="inputDescription">Description</label>
+                                        <textarea name="description" class="form-control" rows="4"></textarea>
+                                    </div>
+                                      <div class="form-group">
                                           <label for="inputProjectLeader">Location</label>
                                           <input name="location" type="text" class="form-control">
                                       </div>
+                                      <div class="form-group">
+                                        <label for="inputName">Created_by</label>
+                                        <input name="created_by" type="integer" class="form-control">
+                                    </div>
                                       <div class="row">
                                           <div class="col-12">
                                               <input type="submit" value="Create new Job"

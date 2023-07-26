@@ -42,10 +42,6 @@
                                                 value="{{ $post->title }}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputDescription">Description</label>
-                                            <textarea name="description" class="form-control" rows="2">{{ $post->description }}</textarea>
-                                        </div>
-                                        <div class="form-group">
                                             <label for="inputClientCompany">Company</label>
                                             <input name="company" type="text" class="form-control"
                                                 value="{{ $post->company }}">
@@ -54,6 +50,10 @@
                                             <label for="inputProjectLeader">Designation</label>
                                             <input name="designation" type="text" class="form-control"
                                                 value="{{ $post->designation }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputDescription">Description</label>
+                                            <textarea name="description" class="form-control" rows="2">{{ $post->description }}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputProjectLeader">Location</label>
