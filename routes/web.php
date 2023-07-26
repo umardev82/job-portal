@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserAuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Models\Company\Company;
 use Illuminate\Support\Facades\Route;
 use illuminate\Support\Facades\Auth;
@@ -28,10 +29,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-    //Admin
-    Route::middleware('auth')->prefix('/admin')->group(function () {
+//Admin
+Route::middleware('auth')->prefix('/admin')->group(function () {
     //Dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    // Admin profile
+    Route::get('profile', [App\Http\Controllers\UserController::class, 'index'])->name('admin.profile.edit');
+    Route::put('profile/update', [App\http\Controllers\UserController::class, 'update'])->name('admin.profile.update');
+
+
     //Post
     Route::get('posts', [PostController::class, 'index'])->name('admin.post.index');
     Route::get('post/create', [PostController::class, 'create'])->name('admin.post.create');
@@ -57,22 +64,22 @@ Route::get('/', function () {
     Route::delete('company/delete/{id}', [CompanyController::class, 'destroy'])->name('admin.company.destroy');
 });
 
-    //Company
+//Company
 
-    Route::middleware('auth')->prefix('/user')->group(function () {
+Route::middleware('auth')->prefix('/user')->group(function () {
 
-        Route::get('dashboard', [App\Http\Controllers\Company\DashboardController::class, 'index'])->name('user.dashboard');
+    Route::get('dashboard', [App\Http\Controllers\Company\DashboardController::class, 'index'])->name('user.dashboard');
 
-    });
-    Route::middleware('auth')->prefix('/company')->group(function () {
+});
+Route::middleware('auth')->prefix('/company')->group(function () {
 
     //Dashboard
     Route::get('dashboard', [App\Http\Controllers\Company\DashboardController::class, 'index'])->name('company.dashboard');
 
     //profile
 
-    Route::get('profile',[App\Http\Controllers\Company\CompanyController::class,'index'])->name('company.profile.edit');
-    Route::put('profile/update',[App\Http\Controllers\Company\CompanyController::class,'update'])->name('company.profile.update');
+    Route::get('profile', [App\Http\Controllers\Company\CompanyController::class, 'index'])->name('company.profile.edit');
+    Route::put('profile/update', [App\Http\Controllers\Company\CompanyController::class, 'update'])->name('company.profile.update');
     //Post
     Route::get('posts', [App\Http\Controllers\Company\PostController::class, 'index'])->name('company.post.index');
     Route::get('post/create', [App\Http\Controllers\Company\PostController::class, 'create'])->name('company.post.create');
@@ -82,7 +89,6 @@ Route::get('/', function () {
     Route::post('post/store', [App\Http\Controllers\Company\PostController::class, 'store'])->name('company.post.store');
     Route::delete('post/delete/{id}', [App\Http\Controllers\Company\PostController::class, 'destroy'])->name('company.post.destroy');
 });
-
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
