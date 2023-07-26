@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserAuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Models\Company\Company;
 use Illuminate\Support\Facades\Route;
 use illuminate\Support\Facades\Auth;
@@ -32,6 +33,12 @@ Route::get('/', function () {
     Route::middleware('auth')->prefix('/admin')->group(function () {
     //Dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.include.dashboard');
+
+    // Admin profile
+       Route::get('profile',[App\Http\Controllers\UserController::class,'index'])->name('admin.profile.edit');
+       Route::put('profile/update',[App\http\Controllers\UserController::class,'update'])->name('admin.profile.update');
+
+
     //Post
     Route::get('posts', [PostController::class, 'index'])->name('admin.post.index');
     Route::get('post/create', [PostController::class, 'create'])->name('admin.post.create');

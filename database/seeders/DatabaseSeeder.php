@@ -21,11 +21,13 @@ class DatabaseSeeder extends Seeder
         ]);
         Company::factory()->count(25)->create();
         Post::factory()->count(25)->create();
+
         User::create([
            'name' => 'admin',
            'email' => 'admin@mail.com',
            'role_id' => 1,
            'password' => Hash::make(123456789),
         ]);
+
     }
 }
